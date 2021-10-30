@@ -4,6 +4,7 @@ from flask_cors import CORS, cross_origin
 import urllib.request
 from urllib.parse import urlparse
 import requests
+import re
 from bs4 import BeautifulSoup
 
 app = flask.Flask(__name__)
@@ -21,12 +22,40 @@ def getHtml(url):
 def replaceHtml(page_html):
     dict = {}
     dict["meat"] = "veg"
-    dict["spaghetti"] = "spaggo"
+    dict["meaty"] = "veggy"
+    dict['\w+(?=\s+stock)'] = 'vegetable'
+    dict["beef"] = "quorn"
+    dict['chicken'] = 'tofu'
+    dict['cheese'] = 'vegan cheese'
+    dict['pork'] = 'tofu'
+    
     for key, value in dict.items():
-        for i in page_html.findAll():
-            if key in i.text:
-                if i.string != None:
-                    i.string = i.string.replace(key, value)
+        for currentTag in page_html.findAll(['p', 'a', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7']):
+            if currentTag.string != None:
+                if re.search(key, currentTag.string):
+                    split_string = re.split(key, currentTag.string)
+                    currentTag.clear()
+                    
+                    for index in range(0, len(split_string) - 1):
+                        # Text before what we want bold
+                        tagNotBold = page_html.new_tag("text")
+                        tagNotBold.string = split_string[index]
+                        currentTag.append(tagNotBold)
+
+                        # Text we want bold
+                        tagBold = page_html.new_tag("strong")
+                        tagBold.string = value
+                        tagBold['class'] = 'veganised'
+                        currentTag.append(tagBold)
+
+                    # Final tag
+                    tagNotBold = page_html.new_tag("text")
+                    tagNotBold.string = split_string[-1]
+                    currentTag.append(tagNotBold)
+
+                    
+                #i.string = re.sub(key, f'<strong>{value}</strong>', i.string)
+                # i.string = i.string.replace(key, value)
 
 def page_Css(page_html, url):
     #find all the external CSS style
@@ -34,6 +63,12 @@ def page_Css(page_html, url):
     base_url = '{uri.scheme}://{uri.netloc}'.format(uri=urlparse(url))
     for css in external_css:
         css.attrs['href'] = base_url + css.attrs['href']
+
+    #add additional css
+    new_css = page_html.new_tag("style")
+    new_css['type'] = 'text/css'
+    new_css.string = '.veganised { color: green; }'
+    page_html.head.append(new_css)
 
 def page_javaScript(page_html, url):
     #list all the scripts tags
@@ -69,7 +104,7 @@ def getVeganisedSite():
         #Extract CSS from the HTML page
         page_Css(page_html, url)
 
-        page_javaScript(page_html, url)
+        # page_javaScript(page_html, url)
 
         page_svg(page_html, url)
 
