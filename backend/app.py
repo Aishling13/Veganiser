@@ -25,7 +25,10 @@ def replaceHtml(page_html):
     dict["meat"] = "veg"
     dict['\w+(?=\s+stock)'] = 'vegetable'
     dict["beef"] = "tofu"
+    dict['skinless'] = ''
+    dict['chicken breasts'] = 'packets of seitan'
     dict['chicken'] = 'seitan'
+    dict['Chicken'] = 'Seitan'
     dict['cheese'] = 'vegan cheese'
     dict['pork'] = 'tofu'
     dict['bacon'] = 'shiitake mushroom'
@@ -33,6 +36,7 @@ def replaceHtml(page_html):
     dict['cream'] = 'coconut cream'
     dict['turkey'] = 'tofurky'
     dict['pigs'] = 'tofus'
+    dict['butter'] = 'plant butter'
 
     for key, value in dict.items():
         for currentTag in page_html.findAll(['p', 'a','h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'li','text']):
@@ -95,6 +99,10 @@ def page_svg(page_html, url):
     base_url = '{uri.scheme}://{uri.netloc}'.format(uri=urlparse(url))
     for svg in svg_use_tags:
         svg.attrs['xlink:href'] = base_url + svg.attrs['xlink:href']
+
+@app.route('/home')
+def home():
+    return "Home!"
 
 @app.route('/veganise', methods=['POST'])
 def getVeganisedSite():

@@ -12,13 +12,13 @@ function HomePage({ setVeganisedUrl }) {
   return (
     <div className="grid-container">
       <div className="title-box">
-        <h1>V For Green</h1>
-        <h2>A veganiser for all your meat recipes</h2>
+        <h1>Veganise It!</h1>
+        <h2>A veganiser for all your favourite recipes</h2>
       </div>
       <div className="content-box">
         <p>Submit a recipe to Veganise:</p>
         <input onChange={e => setInputValue(e.target.value)} placeholder="https://www.bbcgoodfood.com/recipes/chilli-con-carne-recipe" type="text"/>
-        <button className="submit-button" onClick={() => handleSubmit()}>Submit</button>
+        <button className="submit-button" onClick={() => handleSubmit()}>Veganise!</button>
       </div>
       <img className="carrot wiggler" src='https://i.imgur.com/GMdoFaB.png' alt="#"/>
       <img className="tomato wiggler" src='https://i.imgur.com/pLob3ZX.png' alt="#"/>
