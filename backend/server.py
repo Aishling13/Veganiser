@@ -7,10 +7,10 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config["DEBUG"] = True
 
-@app.route('/veganise', methods=['POST'])
+@app.route('/veganise', methods=['GET'])
 @cross_origin()
-def getVeganisedSite(url):
+def getVeganisedSite():
 
-    return jsonify({'<body><h1>Hi</hi></body>'})
+    return jsonify({'response': '<body><h1>Hi</hi></body>'})
 
 app.run(debug=True, use_reloader=False)
