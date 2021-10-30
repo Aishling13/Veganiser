@@ -27,16 +27,18 @@ def replaceHtml(page_html):
     dict["beef"] = "quorn"
     dict['chicken'] = 'tofu'
     dict['cheese'] = 'vegan cheese'
-    dict['pork'] = 'tofu'
+    dict['pork'] = 'quorn'
     dict['bacon'] = 'shiitake mushroom'
     dict['parmesan'] = 'prosociano'
     dict['cream'] = 'coconut cream'
-    
+    dict['turkey'] = 'tofurky'
+    dict['pigs'] = 'tofus'
+
     for key, value in dict.items():
-        for currentTag in page_html.findAll(['p', 'a', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'text']):
-            if currentTag.string != None:
-                if re.search(key, currentTag.string):
-                    split_string = re.split(key, currentTag.string)
+        for currentTag in page_html.findAll(['p', 'a','h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'li','text']):
+            if currentTag.text != None and len(currentTag.contents) != 2: # -_-
+                if re.search(key, currentTag.text):
+                    split_string = re.split(key, currentTag.text)
                     currentTag.clear()
                     
                     for index in range(0, len(split_string) - 1):
