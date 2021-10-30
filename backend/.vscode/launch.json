@@ -8,8 +8,11 @@
             "name": "Veganiser",
             "type": "python",
             "request": "launch",
-            "program": "server.py",
-            "console": "integratedTerminal"
-        }
+            "module": "flask",
+            "env": { "FLASK_APP": "server.py", "FLASK_ENV": "development" },
+            "args": ["run"],
+            "args_": ["run", "--no-debugger"],      
+            "jinja": true
+          }
     ]
 }
