@@ -21,16 +21,19 @@ def getHtml(url):
 
 def replaceHtml(page_html):
     dict = {}
-    dict["meat"] = "veg"
     dict["meaty"] = "veggy"
+    dict["meat"] = "veg"
     dict['\w+(?=\s+stock)'] = 'vegetable'
     dict["beef"] = "quorn"
     dict['chicken'] = 'tofu'
     dict['cheese'] = 'vegan cheese'
     dict['pork'] = 'tofu'
+    dict['bacon'] = 'shiitake mushroom'
+    dict['parmesan'] = 'prosociano'
+    dict['cream'] = 'coconut cream'
     
     for key, value in dict.items():
-        for currentTag in page_html.findAll(['p', 'a', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7']):
+        for currentTag in page_html.findAll(['p', 'a', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'text']):
             if currentTag.string != None:
                 if re.search(key, currentTag.string):
                     split_string = re.split(key, currentTag.string)
