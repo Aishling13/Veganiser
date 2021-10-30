@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import HomePage from './homepage/homepage.js';
+import VeganisedPage from './veganisedpage/veganisedpage.js'
+
+const Router = () => {
+    const [veganisedUrl, setVeganisedUrl] = useState('')
+
+    switch(veganisedUrl) {
+        case '':
+            return <HomePage setVeganisedUrl={setVeganisedUrl}/>
+        default:
+            return <VeganisedPage veganisedUrl={veganisedUrl} />
+    }
+}
 
 ReactDOM.render(
-    <HomePage />,
+    <Router />,
     document.getElementById('root')
 );
 

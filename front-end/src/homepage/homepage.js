@@ -6,25 +6,12 @@ import broccoli from '../images/broccoli.png';
 
 import { useState, useCallback } from 'react'
 
-function HomePage() {
+function HomePage({ setVeganisedUrl }) {
   const [inputValue, setInputValue] = useState("")
 
   const handleSubmit = useCallback(() => {
-    const formData = new FormData();
-    formData.append('url', inputValue)
-
-    fetch('http://localhost:5000/veganise', {
-      method: 'POST',
-      body: formData,
-    })
-    .then(res => res.text())
-    .then(body => {
-      document.open();
-      document.write(body);
-      document.close();
-    })
-    .catch(err => alert(err))
-  }, [inputValue])
+    setVeganisedUrl(inputValue)
+  }, [inputValue, setVeganisedUrl])
 
   return (
     <div className="grid-container">
