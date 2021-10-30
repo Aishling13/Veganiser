@@ -7,9 +7,13 @@ import broccoli from '../images/broccoli.png';
 function HomePage() {
   return (
     <div className="grid-container">
-      <h1>Veganise IT!!</h1>
+      <div className="title-box">
+        <h1>V For Green</h1>
+        <h2>A veganiser for all your meat recipes</h2>
+      </div>
       <div className="content-box">
-        <p>Recipe to Veganise:</p><input/>
+        <p>Submit a recipe to Veganise:</p>
+        <input type="text" placeholder="https://www.bbcgoodfood.com/recipes/chilli-con-carne-recipe"/>
         <button className="submit-button">Submit</button>
       </div>
       <img className="carrot" src={carrot} alt="cartoon carrot"/>
