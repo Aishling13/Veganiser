@@ -24,10 +24,10 @@ def replaceHtml(page_html):
     dict["meaty"] = "veggy"
     dict["meat"] = "veg"
     dict['\w+(?=\s+stock)'] = 'vegetable'
-    dict["beef"] = "quorn"
-    dict['chicken'] = 'tofu'
+    dict["beef"] = "tofu"
+    dict['chicken'] = 'seitan'
     dict['cheese'] = 'vegan cheese'
-    dict['pork'] = 'quorn'
+    dict['pork'] = 'tofu'
     dict['bacon'] = 'shiitake mushroom'
     dict['parmesan'] = 'prosociano'
     dict['cream'] = 'coconut cream'
