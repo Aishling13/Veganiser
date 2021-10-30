@@ -1,8 +1,4 @@
 import "./homepage.css";
-import carrot from '../images/carrot.jpg';
-import tomato from '../images/tomato.png';
-import pepper from '../images/pepper.png';
-import broccoli from '../images/broccoli.png';
 
 import { useState, useCallback } from 'react'
 
@@ -24,10 +20,10 @@ function HomePage({ setVeganisedUrl }) {
         <input onChange={e => setInputValue(e.target.value)} placeholder="https://www.bbcgoodfood.com/recipes/chilli-con-carne-recipe" type="text"/>
         <button className="submit-button" onClick={() => handleSubmit()}>Submit</button>
       </div>
-      <img className="carrot wiggler" src={carrot} alt="#"/>
-      <img className="tomato wiggler" src={tomato} alt="#"/>
-      <img className="pepper wiggler" src={pepper} alt="#"/>
-      <img className="broccoli wiggler" src={broccoli} alt="#"/>
+      <img className="carrot wiggler" src='https://i.imgur.com/GMdoFaB.png' alt="#"/>
+      <img className="tomato wiggler" src='https://i.imgur.com/pLob3ZX.png' alt="#"/>
+      <img className="pepper wiggler" src='https://i.imgur.com/v2BrLKm.png' alt="#"/>
+      <img className="broccoli wiggler" src='https://i.imgur.com/E9dGIC9.png' alt="#"/>
     </div>
   );
 }
