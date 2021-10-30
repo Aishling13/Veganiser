@@ -1,5 +1,47 @@
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+}
+
 iframe {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+}
+
+.loading-page {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.loading-group {
+    display: grid;
+    justify-items: center;
+}
+
+.loading-pepper {
+    width: 250px;
+    animation: rotation 2s;
+    animation-iteration-count: infinite;
+}
+
+.carrot {
+    width: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 40px 60px;
+}
+
+.tomato {
+    width: 150px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 40px 60px;
 }

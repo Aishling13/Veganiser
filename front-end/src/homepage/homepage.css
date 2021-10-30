@@ -1,3 +1,15 @@
+@keyframes wiggle {
+  0% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
 .title-box {
   display: grid;
   place-items: center;
@@ -67,15 +79,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  padding: 20px 40px;
+  padding: 40px 60px;
 }
 
 .tomato {
   width: 150px;
   position: absolute;
-  top: 0;
+  bottom: 0;
   right: 0;
-  padding: 20px 40px;
+  padding: 40px 60px;
 }
 
 .pepper {
@@ -83,13 +95,19 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 20px 40px;
+  padding: 40px 60px;
 }
 
 .broccoli {
   width: 200px;
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
-  padding: 20px 40px;
+  padding: 40px 60px;
+}
+
+.wiggler {
+  animation: wiggle 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }

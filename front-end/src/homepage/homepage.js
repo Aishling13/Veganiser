@@ -21,13 +21,13 @@ function HomePage({ setVeganisedUrl }) {
       </div>
       <div className="content-box">
         <p>Submit a recipe to Veganise:</p>
-        <input onChange={e => setInputValue(e.target.value)}/>
+        <input onChange={e => setInputValue(e.target.value)} placeholder="https://www.bbcgoodfood.com/recipes/chilli-con-carne-recipe" type="text"/>
         <button className="submit-button" onClick={() => handleSubmit()}>Submit</button>
       </div>
-      <img className="carrot" src={carrot} alt="cartoon carrot"/>
-      <img className="tomato" src={tomato} alt="cartoon tomato"/>
-      <img className="pepper" src={pepper} alt="cartoon pepper"/>
-      <img className="broccoli" src={broccoli} alt="cartoon broccoli"/>
+      <img className="carrot wiggler" src={carrot} alt="#"/>
+      <img className="tomato wiggler" src={tomato} alt="#"/>
+      <img className="pepper wiggler" src={pepper} alt="#"/>
+      <img className="broccoli wiggler" src={broccoli} alt="#"/>
     </div>
   );
 }

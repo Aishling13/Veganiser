@@ -1,4 +1,7 @@
 import './veganisedpage.css'
+import pepper from '../images/pepper.png';
+import carrot from '../images/carrot.jpg';
+import tomato from '../images/tomato.png';
 
 import { useState, useEffect } from 'react'
 
@@ -25,11 +28,20 @@ function VeganisedPage({ veganisedUrl }) {
   }, [veganisedUrl])
 
   if (!pageReady) {
-    return <>Loading</>
+    return (
+      <div className="loading-page">
+        <div className="loading-group">
+          <img className="loading-pepper" src={pepper} alt="#"/>
+          <h2>Loading...</h2>
+        </div>
+      </div>
+    )
   } else {
     return (
       <div>
         <iframe id="VeganisedPage" title="VeganisedPage" src="about:blank"/>
+        <img className="carrot wiggler" src={carrot} alt="#"/>
+        <img className="tomato wiggler" src={tomato} alt="#"/>
       </div>
     )
   }
