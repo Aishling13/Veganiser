@@ -4,7 +4,15 @@ import tomato from '../images/tomato.png';
 import pepper from '../images/pepper.png';
 import broccoli from '../images/broccoli.png';
 
-function HomePage() {
+import { useState, useCallback } from 'react'
+
+function HomePage({ setVeganisedUrl }) {
+  const [inputValue, setInputValue] = useState("")
+
+  const handleSubmit = useCallback(() => {
+    setVeganisedUrl(inputValue)
+  }, [inputValue, setVeganisedUrl])
+
   return (
     <div className="grid-container">
       <div className="title-box">
@@ -13,8 +21,8 @@ function HomePage() {
       </div>
       <div className="content-box">
         <p>Submit a recipe to Veganise:</p>
-        <input type="text" placeholder="https://www.bbcgoodfood.com/recipes/chilli-con-carne-recipe"/>
-        <button className="submit-button">Submit</button>
+        <input onChange={e => setInputValue(e.target.value)}/>
+        <button className="submit-button" onClick={() => handleSubmit()}>Submit</button>
       </div>
       <img className="carrot" src={carrot} alt="cartoon carrot"/>
       <img className="tomato" src={tomato} alt="cartoon tomato"/>
